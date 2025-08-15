@@ -510,12 +510,6 @@ function App() {
                 ))}
               </div>
               
-              <div className="mt-8 p-6 bg-gradient-to-r from-green-100 to-green-200 rounded-xl text-center">
-                <h4 className="text-xl font-bold text-green-800 mb-2">Total Donasi Terkumpul</h4>
-                <p className="text-3xl font-bold text-green-600">Rp 3.150.000</p>
-                <p className="text-green-700 mt-2">Dari {donors.length} donatur yang mulia hati</p>
-              </div>
-              
               <div className="mt-6 p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
                 <div className="flex items-start">
                   <div className="flex-shrink-0">
