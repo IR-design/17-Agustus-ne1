@@ -86,12 +86,90 @@ const competitions = [
 ];
 
 const donors = [
-  { name: 'Bapak Ahmad Rizki', amount: 'Rp 500.000', date: '10 Agustus 2025' },
-  { name: 'Ibu Siti Nurhaliza', amount: 'Rp 300.000', date: '11 Agustus 2025' },
-  { name: 'Keluarga Budi Santoso', amount: 'Rp 750.000', date: '12 Agustus 2025' },
-  { name: 'RT 05 Blok A', amount: 'Rp 1.000.000', date: '13 Agustus 2025' },
-  { name: 'Ibu Dewi Kartika', amount: 'Rp 200.000', date: '14 Agustus 2025' },
-  { name: 'Bapak Andi Wijaya', amount: 'Rp 400.000', date: '15 Agustus 2025' }
+  { 
+    name: 'Bapak Ahmad Rizki', 
+    type: 'Uang Tunai', 
+    amount: 'Rp 500.000', 
+    description: 'Untuk hadiah lomba anak-anak',
+    date: '10 Agustus 2025' 
+  },
+  { 
+    name: 'Ibu Siti Nurhaliza', 
+    type: 'Uang Tunai', 
+    amount: 'Rp 300.000', 
+    description: 'Konsumsi peserta',
+    date: '11 Agustus 2025' 
+  },
+  { 
+    name: 'Keluarga Budi Santoso', 
+    type: 'Barang', 
+    amount: 'Sound System + Mic', 
+    description: 'Peralatan acara',
+    date: '12 Agustus 2025' 
+  },
+  { 
+    name: 'RT 05 Blok A', 
+    type: 'Uang Tunai', 
+    amount: 'Rp 1.000.000', 
+    description: 'Dana operasional acara',
+    date: '13 Agustus 2025' 
+  },
+  { 
+    name: 'Ibu Dewi Kartika', 
+    type: 'Barang', 
+    amount: '50 Bendera Merah Putih', 
+    description: 'Dekorasi acara',
+    date: '14 Agustus 2025' 
+  },
+  { 
+    name: 'Bapak Andi Wijaya', 
+    type: 'Jasa', 
+    amount: 'Dokumentasi Foto & Video', 
+    description: 'Dokumentasi lengkap acara',
+    date: '15 Agustus 2025' 
+  },
+  { 
+    name: 'Toko Sari Roti', 
+    type: 'Barang', 
+    amount: '100 Roti untuk Konsumsi', 
+    description: 'Konsumsi peserta dan panitia',
+    date: '16 Agustus 2025' 
+  },
+  { 
+    name: 'Bapak Hendra Kusuma', 
+    type: 'Uang Tunai', 
+    amount: 'Rp 250.000', 
+    description: 'Hadiah juara lomba dewasa',
+    date: '16 Agustus 2025' 
+  },
+  { 
+    name: 'Ibu Maria Sari', 
+    type: 'Jasa', 
+    amount: 'Dekorasi & Hiasan', 
+    description: 'Menghias panggung dan area acara',
+    date: '17 Agustus 2025' 
+  },
+  { 
+    name: 'Warung Bu Tini', 
+    type: 'Barang', 
+    amount: 'Es Teh Manis 200 Gelas', 
+    description: 'Minuman untuk peserta',
+    date: '17 Agustus 2025' 
+  },
+  { 
+    name: 'Pemuda Karang Taruna', 
+    type: 'Jasa', 
+    amount: 'Tenaga Sukarela', 
+    description: 'Membantu setup dan koordinasi acara',
+    date: '17 Agustus 2025' 
+  },
+  { 
+    name: 'Bapak Sutrisno', 
+    type: 'Uang Tunai', 
+    amount: 'Rp 150.000', 
+    description: 'Untuk keperluan umum',
+    date: '17 Agustus 2025' 
+  }
 ];
 
 function App() {
@@ -492,32 +570,188 @@ function App() {
             </div>
             
             <div className="p-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {donors.map((donor, index) => (
-                  <div key={index} className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 border border-green-200 hover:shadow-lg transition-all duration-300">
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="flex-1">
-                        <h4 className="font-bold text-gray-800 text-lg mb-1">{donor.name}</h4>
-                        <p className="text-green-600 font-semibold text-xl">{donor.amount}</p>
-                      </div>
-                      <div className="text-3xl">🙏</div>
-                    </div>
-                    <p className="text-gray-500 text-sm flex items-center">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      {donor.date}
-                    </p>
-                  </div>
-                ))}
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="bg-gradient-to-r from-green-100 to-green-200">
+                      <th className="px-4 py-4 text-left text-sm font-bold text-green-800 uppercase tracking-wider border-b-2 border-green-300">
+                        No.
+                      </th>
+                      <th className="px-4 py-4 text-left text-sm font-bold text-green-800 uppercase tracking-wider border-b-2 border-green-300">
+                        Nama Donatur
+                      </th>
+                      <th className="px-4 py-4 text-left text-sm font-bold text-green-800 uppercase tracking-wider border-b-2 border-green-300">
+                        Jenis Donasi
+                      </th>
+                      <th className="px-4 py-4 text-left text-sm font-bold text-green-800 uppercase tracking-wider border-b-2 border-green-300">
+                        Jumlah/Barang/Jasa
+                      </th>
+                      <th className="px-4 py-4 text-left text-sm font-bold text-green-800 uppercase tracking-wider border-b-2 border-green-300">
+                        Keterangan
+                      </th>
+                      <th className="px-4 py-4 text-left text-sm font-bold text-green-800 uppercase tracking-wider border-b-2 border-green-300">
+                        Tanggal
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-green-200">
+                    {donors.map((donor, index) => (
+                      <tr key={index} className="hover:bg-green-50 transition-colors duration-200">
+                        <td className="px-4 py-4 text-sm font-medium text-gray-900">
+                          {index + 1}
+                        </td>
+                        <td className="px-4 py-4 text-sm font-semibold text-gray-800">
+                          <div className="flex items-center">
+                            <span className="text-2xl mr-2">🙏</span>
+                            {donor.name}
+                          </div>
+                        </td>
+                        <td className="px-4 py-4 text-sm">
+                          <span className={`inline-flex px-3 py-1 rounded-full text-xs font-semibold ${
+                            donor.type === 'Uang Tunai' ? 'bg-green-100 text-green-800' :
+                            donor.type === 'Barang' ? 'bg-blue-100 text-blue-800' :
+                            donor.type === 'Jasa' ? 'bg-purple-100 text-purple-800' :
+                            'bg-gray-100 text-gray-800'
+                          }`}>
+                            {donor.type === 'Uang Tunai' ? '💰' : 
+                             donor.type === 'Barang' ? '📦' : 
+                             donor.type === 'Jasa' ? '🤝' : '❓'} {donor.type}
+                          </span>
+                        </td>
+                        <td className="px-4 py-4 text-sm font-medium text-gray-900">
+                          {donor.amount}
+                        </td>
+                        <td className="px-4 py-4 text-sm text-gray-600">
+                          {donor.description}
+                        </td>
+                        <td className="px-4 py-4 text-sm text-gray-500">
+                          <div className="flex items-center">
+                            <Calendar className="w-4 h-4 mr-1" />
+                            {donor.date}
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
               
-              <div className="mt-6 p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+              <div className="mt-8 p-6 bg-gradient-to-r from-yellow-50 to-orange-50 border-l-4 border-yellow-400 rounded-r-lg">
                 <div className="flex items-start">
                   <div className="flex-shrink-0">
                     <Heart className="w-6 h-6 text-yellow-600" />
                   </div>
                   <div className="ml-3">
-                    <h4 className="text-lg font-semibold text-yellow-800">Cara Berdonasi</h4>
-                    <p className="text-yellow-700 mt-1">
+                    <h4 className="text-xl font-bold text-yellow-800 mb-3">💝 Cara Berdonasi</h4>
+                    <div className="text-yellow-700 space-y-2">
+                      <p className="font-semibold">📱 Hubungi Panitia:</p>
+                      <p>
+                        Klik tombol "Donasi Sekarang" di atas untuk menghubungi panitia melalui WhatsApp. 
+                        Kami akan memberikan informasi rekening dan cara donasi yang mudah dan aman.
+                      </p>
+                      <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                        <div className="bg-white bg-opacity-50 p-3 rounded-lg">
+                          <p className="font-semibold text-green-700">💰 Uang Tunai</p>
+                          <p>Transfer bank atau tunai langsung</p>
+                        </div>
+                        <div className="bg-white bg-opacity-50 p-3 rounded-lg">
+                          <p className="font-semibold text-blue-700">📦 Barang</p>
+                          <p>Konsumsi, dekorasi, peralatan</p>
+                        </div>
+                        <div className="bg-white bg-opacity-50 p-3 rounded-lg">
+                          <p className="font-semibold text-purple-700">🤝 Jasa</p>
+                          <p>Tenaga, keahlian, dokumentasi</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="text-lg font-bold text-green-800">📊 Total Kontribusi</h4>
+                    <p className="text-green-600 text-sm">Dari {donors.length} donatur yang mulia hati</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-2xl font-bold text-green-700">Rp 2.200.000</p>
+                    <p className="text-sm text-green-600">+ Barang & Jasa</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-white py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+              <div className="flex items-center mb-4">
+                <Flag className="w-8 h-8 mr-2 text-red-500" />
+                <h3 className="text-2xl font-bold">Indonesia Merdeka</h3>
+              </div>
+              <p className="text-gray-300">
+                Merayakan kemerdekaan Indonesia dengan penuh kebanggaan dan semangat persatuan.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="text-xl font-semibold mb-4">Link Berguna</h4>
+              <ul className="space-y-2 text-gray-300">
+                <li><a href="#" className="hover:text-red-400 transition-colors">Sejarah Indonesia</a></li>
+                <li><a href="#" className="hover:text-red-400 transition-colors">Pahlawan Nasional</a></li>
+                <li><a href="#" className="hover:text-red-400 transition-colors">Budaya Indonesia</a></li>
+                <li><a href="#" className="hover:text-red-400 transition-colors">Wisata Indonesia</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="text-xl font-semibold mb-4">Kontak</h4>
+              <div className="text-gray-300 space-y-2">
+                <p>🇮🇩 Republik Indonesia</p>
+                <p>📧 info@indonesia.go.id</p>
+                <p>🌐 www.indonesia.go.id</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-700 pt-8 text-center">
+            <p className="text-gray-300">
+              © 2025 Website 17 Agustus. Dibuat dengan 🇮🇩 untuk Indonesia.
+            </p>
+            <p className="text-sm text-gray-400 mt-2">
+              "Merdeka atau Mati!" - Bung Tomo
+            </p>
+          </div>
+        </div>
+      </footer>
+      
+      {/* Registration Form Modal */}
+      <RegistrationForm 
+        isOpen={showRegistrationForm} 
+        onClose={() => setShowRegistrationForm(false)} 
+        onSubmit={handleRegistrationSubmit}
+      />
+      
+      {/* WhatsApp Chat Button */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <button
+          onClick={handleWhatsAppClick}
+          className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl hover:shadow-xl transition-all duration-300 transform hover:scale-110 animate-pulse"
+          title="Chat via WhatsApp"
+        >
+          <MessageCircle className="w-8 h-8" />
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default App;
                       Klik tombol "Donasi Sekarang" di atas untuk menghubungi panitia melalui WhatsApp. 
                       Kami akan memberikan informasi rekening dan cara donasi yang mudah dan aman.
                     </p>
